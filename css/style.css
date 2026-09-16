@@ -522,28 +522,52 @@ section[id] {
   gap: 24px;
 }
 .card {
-  background: var(--bg);
+  position: relative;
+  background: linear-gradient(165deg, rgba(15, 30, 50, 0.6), rgba(8, 18, 32, 0.4));
   border-radius: var(--radius);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  padding: 32px 28px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 36px 30px;
+  overflow: hidden;
   transition: var(--transition);
+}
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, transparent 30%, rgba(7, 16, 28, 0.6)),
+    radial-gradient(130% 100% at 100% 0%, var(--card-glow), transparent 55%),
+    var(--card-img);
+  background-size: 100% 100%, 100% 100%, 52% auto;
+  background-position: 0 0, 0 0, 105% 0;
+  background-repeat: no-repeat;
+  z-index: 0;
+  pointer-events: none;
+}
+.card > * {
+  position: relative;
+  z-index: 1;
 }
 .card:hover {
   transform: translateY(-6px);
   box-shadow: var(--shadow-lg);
 }
-.card-icon {
-  font-size: 2.4rem;
-  margin-bottom: 16px;
-}
+.c-aneurisma { --card-glow: rgba(220, 38, 38, 0.28); --card-img: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Cg fill='none' stroke='white' stroke-width='4' stroke-linecap='round'%3E%3Cpath d='M99 38C68 38 46 60 46 90c0 18 10 34 23 42-5 9-2 18 4 23-2 8 2 14 8 16-3 10 8 16 17 15 5 1 11-2 13-7 6 5 14 5 18-2 9 7 19 5 22-4 4-3 6-6 7-10 8-3 13-10 10-17-5-8-2-20 8-25 6-11 1-24-10-28-10-8-17-19-17-33C128 58 114 38 99 38z'/%3E%3Cpath d='M99 44c-11 8-16 24-13 44'/%3E%3Cpath d='M137 74c-8 6-10 17-8 28'/%3E%3Cpath d='M99 96c-9 6-13 20-10 33'/%3E%3Cpath d='M130 102c-6 3-8 12-7 19'/%3E%3C/g%3E%3C/svg%3E"); }
+.c-acv { --card-glow: rgba(139, 92, 246, 0.3); --card-img: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Cg fill='none' stroke='white' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M100 24c0 0-44 60-44 100a44 44 0 0 0 88 0c0-40-44-100-44-100z'/%3E%3Cpath d='M74 116h16l8-16 12 30 10-14h12'/%3E%3C/g%3E%3C/svg%3E"); }
+.c-mav { --card-glow: rgba(34, 184, 207, 0.28); --card-img: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Cg fill='none' stroke='white' stroke-width='3.5'%3E%3Cpath d='M82 60l46-10M82 60l-14 32M78 62l40 24M76 68l2 58M124 98l14 42M128 80l-6 20M118 80l-48 24'/%3E%3Ccircle cx='76' cy='58' r='14'/%3E%3Ccircle cx='128' cy='48' r='11'/%3E%3Ccircle cx='122' cy='92' r='15'/%3E%3Ccircle cx='74' cy='130' r='13'/%3E%3Ccircle cx='140' cy='124' r='10'/%3E%3Ccircle cx='126' cy='146' r='8'/%3E%3Ccircle cx='50' cy='80' r='9'/%3E%3C/g%3E%3C/svg%3E"); }
+.c-tumor { --card-glow: rgba(245, 158, 11, 0.26); --card-img: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Cg fill='none' stroke='white' stroke-width='4' stroke-linecap='round'%3E%3Ccircle cx='100' cy='100' r='12'/%3E%3Ccircle cx='100' cy='100' r='27'/%3E%3Ccircle cx='100' cy='100' r='42'/%3E%3Cpath d='M100 14v18M100 168v18M14 100h18M168 100h18M38 38l13 13M149 149l13 13M162 38l-13 13M51 149l-13 13'/%3E%3C/g%3E%3C/svg%3E"); }
+.c-columna { --card-glow: rgba(106, 172, 182, 0.26); --card-img: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Cg fill='none' stroke='white' stroke-width='4' stroke-linecap='round'%3E%3Cpath d='M100 12c-8 26 8 46 0 72s8 52 0 100'/%3E%3Cpath d='M100 30l26-4M100 62l26-4M100 96l26-4M100 130l26-4M100 162l22-3M100 30l-26-4M100 62l-26-4M100 96l-26-4M100 130l-26-4M100 162l-22-3'/%3E%3C/g%3E%3C/svg%3E"); }
+.c-angio { --card-glow: rgba(99, 102, 241, 0.28); --card-img: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Cg fill='none' stroke='white' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='40' y='46' width='120' height='108' rx='12'/%3E%3Cpath d='M40 132h120'/%3E%3Ccircle cx='60' cy='64' r='5'/%3E%3Cpath d='M58 108h16l10-18 14 34 10-20h22'/%3E%3C/g%3E%3C/svg%3E"); }
 .card h3 {
   color: #fff;
   font-size: 1.15rem;
   margin-bottom: 10px;
 }
 .card p {
-  color: #94a3b8;
+  color: #aebcce;
   font-size: 0.92rem;
+  position: relative;
+  z-index: 1;
 }
 
 /* === SEDES === */
@@ -911,8 +935,9 @@ section[id] {
   background: #25d366;
   color: #fff;
   font-weight: 700;
-  padding: 14px 22px;
-  border-radius: 50px;
+  font-size: 0.82rem;
+  padding: 10px 16px;
+  border-radius: 40px;
   text-decoration: none;
   box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
   transition: var(--transition);

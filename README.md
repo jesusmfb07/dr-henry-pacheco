@@ -70,6 +70,36 @@ Para regenerar los placeholders: `powershell -File regenerar-imagenes.ps1` (fond
 
 La foto real del doctor (`dr-henry-pacheco.jpg`, 564x564) ya está incluida en `assets/images/`.
 
+## Dominio propio (neurocirujanohenrypacheco.com)
+
+**No necesitas hosting:** GitHub Pages sirve el sitio gratis, solo hay que conectar el dominio comprado en Porkbun.
+
+### Paso 1: DNS en Porkbun
+Ve a **Porkbun → Manage my Domains → neurocirujanohenrypacheco.com → DNS**.
+
+En **DNS Records**, agrega:
+- **4 registros tipo A** (deja el nombre/domain vacío o `@`):
+  - `185.199.108.153`
+  - `185.199.109.153`
+  - `185.199.110.153`
+  - `185.199.111.153`
+
+- **1 registro tipo CNAME** (para que `www.neurocirujanohenrypacheco.com` también funcione):
+  - Host: `www`
+  - Target: `jesusmfb07.github.io`
+
+Guarda los cambios. La propagación de DNS puede tardar de **15 minutos a 24 horas**.
+
+### Paso 2: GitHub Pages ya está configurado
+El archivo `CNAME` del proyecto ya contiene `neurocirujanohenrypacheco.com`, así que una vez que el DNS apunte correctamente, el sitio quedará disponible en:
+- `https://neurocirujanohenrypacheco.com` (con certificado SSL automático)
+
+## Datos de contacto actualizados
+- 📱 WhatsApp: +51 974 639 760
+- ✉️ Correo: henrypachecofb@gmail.com
+- 🏥 Clínicas: Delgado, Sanna San Borja, Sanna El Golf, Clínica Internacional
+- 🏥 Hospital Nacional Daniel Alcides Carrión (24 años de servicio)
+
 ## Créditos y datos
 
 - CMP: 34879
