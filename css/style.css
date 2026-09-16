@@ -523,24 +523,13 @@ section[id] {
 }
 .card {
   position: relative;
-  background: linear-gradient(165deg, var(--tint) 0%, #ffffff 70%);
+  background: var(--card-bg);
   border-radius: var(--radius);
   border: 1px solid var(--border);
   padding: 34px 30px;
   overflow: hidden;
+  box-shadow: 0 4px 14px rgba(2, 6, 23, 0.06);
   transition: var(--transition);
-}
-.card::after {
-  content: "";
-  position: absolute;
-  right: -40px;
-  top: -40px;
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  background: var(--tab);
-  opacity: 0.07;
-  pointer-events: none;
 }
 .card > * {
   position: relative;
@@ -561,18 +550,18 @@ section[id] {
   background: var(--tab);
   color: #fff;
   margin-bottom: 20px;
-  box-shadow: 0 6px 16px color-mix(in srgb, var(--tab) 35%, transparent);
+  box-shadow: 0 6px 16px rgba(2, 6, 23, 0.18);
 }
 .card-ico svg {
   width: 34px;
   height: 34px;
 }
-.c-aneurisma { --tab: #dc2626; --tint: #fef2f2; }
-.c-acv { --tab: #7c3aed; --tint: #f5f3ff; }
-.c-mav { --tab: #0e7490; --tint: #ecfeff; }
-.c-tumor { --tab: #d97706; --tint: #fffbeb; }
-.c-columna { --tab: #0d9488; --tint: #f0fdfa; }
-.c-angio { --tab: #4f46e5; --tint: #eef2ff; }
+.c-aneurisma { --tab: #dc2626; --card-bg: #fff1f2; }
+.c-acv { --tab: #7c3aed; --card-bg: #f4efff; }
+.c-mav { --tab: #0e7490; --card-bg: #e6f9fd; }
+.c-tumor { --tab: #d97706; --card-bg: #fff5e6; }
+.c-columna { --tab: #0d9488; --card-bg: #e9fbf8; }
+.c-angio { --tab: #4f46e5; --card-bg: #eaeefd; }
 .card h3 {
   color: var(--dark);
   font-size: 1.15rem;
