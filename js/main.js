@@ -71,18 +71,33 @@ function mostrarFotoReemplazo(img) {
   img.replaceWith(iniciales);
 }
 
-// Formulario de cita
+// Formulario de cita → envía la solicitud por WhatsApp
 const citaForm = document.getElementById('citaForm');
 if (citaForm) {
   citaForm.addEventListener('submit', (e) => {
     e.preventDefault();
-    const formOk = document.createElement('div');
-    formOk.className = 'form-ok';
-    formOk.style.display = 'block';
-    formOk.textContent = '✅ ¡Gracias! Hemos recibido tu solicitud. Nos pondremos en contacto contigo pronto para confirmar tu cita.';
-    citaForm.prepend(formOk);
-    citaForm.reset();
-    setTimeout(() => { formOk.remove(); }, 6000);
+    const nombre = document.getElementById('nombre').value.trim();
+    const telefono = document.getElementById('telefono').value.trim();
+    const correo = document.getElementById('correo').value.trim();
+    const sede = document.getElementById('sede').value.trim();
+    const motivo = document.getElementById('motivo').value.trim();
+
+    const opcionesSede = {
+      delgado: 'Clínica Delgado',
+      sanborja: 'Sanna San Borja',
+      golf: 'Sanna El Golf',
+      internacional: 'Clínica Internacional'
+    };
+
+    const mensaje =
+      'Hola Dr. Henry Pacheco, quiero agendar una cita médica.%0A' +
+      '👤 Nombre: ' + encodeURIComponent(nombre) + '%0A' +
+      '📱 Teléfono: ' + encodeURIComponent(telefono) +
+      (correo ? '%0A✉️ Correo: ' + encodeURIComponent(correo) : '') +
+      '%0A🏥 Sede de preferencia: ' + encodeURIComponent(opcionesSede[sede] || sede) +
+      (motivo ? '%0A📝 Motivo: ' + encodeURIComponent(motivo) : '');
+
+    window.open('https://wa.me/51974639760?text=' + mensaje, '_blank');
   });
 }
 

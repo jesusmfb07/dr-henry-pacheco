@@ -77,6 +77,17 @@ section[id] {
   align-items: center;
   gap: 6px;
 }
+.topbar-link {
+  color: #cbd5e1;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: var(--transition);
+}
+.topbar-link:hover {
+  color: var(--accent);
+}
 .topbar-social {
   display: flex;
   gap: 16px;
@@ -598,6 +609,21 @@ section[id] {
   border-top: 1px solid var(--border);
   padding-top: 12px;
   font-style: italic;
+}
+.sede-card-contact {
+  background: linear-gradient(160deg, var(--primary), var(--primary-dark));
+  border: none;
+}
+.sede-card-contact h3,
+.sede-card-contact p {
+  color: #fff;
+}
+.sede-card-contact .sede-info li {
+  color: #e0f2fe;
+}
+.sede-card-contact .sede-flag {
+  background: rgba(255, 255, 255, 0.18);
+  color: #fff;
 }
 .sede-card .btn {
   align-self: flex-start;
