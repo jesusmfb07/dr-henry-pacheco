@@ -516,6 +516,11 @@ section[id] {
 }
 
 /* === ESPECIALIDADES === */
+.section-patologias {
+  background:
+    radial-gradient(900px 400px at 100% -10%, rgba(14, 116, 144, 0.08), transparent 60%),
+    #eef3f8;
+}
 .especialidades-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
