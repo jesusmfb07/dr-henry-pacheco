@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
@@ -12,7 +12,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=3">
+  <link rel="stylesheet" href="css/style.css?v=4">
 </head>
 <body>
 
@@ -23,7 +23,7 @@
         <span>🩺 Neurocirugía · Neurointervencionismo</span>
         <span>📍 Lima, Perú</span>
       </div>
-      <div class="topbar-social topbar-zoom"><span>Citas virtuales vía Zoom:</span><a href="tel:+51987271222">987 271 222</a></div>
+      <div class="topbar-social topbar-zoom"><span>Citas virtuales vía Zoom:</span><a href="tel:+51987271222">987&nbsp;271&nbsp;222</a></div>
     </div>
   </div>
 
@@ -47,7 +47,7 @@
         <a href="#agenda" class="nav-link">Contacto</a>
         <a href="#agenda" class="btn btn-primary nav-cta">Agenda una cita</a>
       </nav>
-      <button class="hamburger" id="hamburger" aria-label="Menú">
+      <button type="button" class="hamburger" id="hamburger" aria-label="Menú">
         <span></span><span></span><span></span>
       </button>
     </div>
@@ -55,29 +55,39 @@
 
   <!-- Hero -->
   <section id="inicio" class="hero">
-    <div class="hero-overlay"></div>
-    <div class="container hero-content">
-      <div class="hero-badge">Referente Nacional en Neurointervencionismo</div>
-      <h1 class="hero-title">Dr. Henry <span class="highlight">Pacheco</span> Fernández Baca</h1>
-      <p class="hero-subtitle">Neurocirujano · Especialista en Neurointervencionismo</p>
-      <div class="hero-line">CMP 34879 · RNE 19819</div>
-      <p class="hero-desc">Médico Neurocirujano con 24 años de servicio en el Hospital Nacional Daniel Alcides Carrión del Callao, donde lideró su Unidad de Neurointervencionismo. Actualmente atiende en las clínicas Delgado, Sanna San Borja, Sanna El Golf e Internacional del centro de Lima.</p>
-      <div class="hero-actions">
-        <a href="#agenda" class="btn btn-primary">Agenda una cita</a>
-        <a href="#sobre-mi" class="btn btn-outline">Conóceme</a>
+    <div class="container hero-layout">
+      <div class="hero-content">
+        <div class="hero-badge">Referente Nacional en Neurointervencionismo</div>
+        <h1 class="hero-title"><span class="hero-title-prefix">Dr.</span> Henry Pacheco <span class="hero-lastname">Fernández Baca</span></h1>
+        <p class="hero-subtitle">Neurocirujano · Especialista en Neurointervencionismo</p>
+        <div class="hero-line">CMP 34879 · RNE 19819</div>
+        <p class="hero-desc">Médico Neurocirujano con 24 años de servicio en el Hospital Nacional Daniel Alcides Carrión del Callao, donde lideró su Unidad de Neurointervencionismo. Actualmente atiende en las clínicas Delgado, Sanna San Borja, Sanna El Golf e Internacional del centro de Lima.</p>
+        <div class="hero-actions">
+          <a href="#agenda" class="btn btn-primary">Agenda una cita</a>
+          <a href="#sobre-mi" class="btn btn-outline">Conóceme</a>
+        </div>
+        <ul class="hero-stats" aria-label="Trayectoria profesional">
+          <li class="stat">
+            <strong>3000+</strong>
+            <span>Procedimientos</span>
+          </li>
+          <li class="stat">
+            <strong>24+</strong>
+            <span>Años de experiencia</span>
+          </li>
+          <li class="stat">
+            <strong>1000+</strong>
+            <span>Vidas salvadas</span>
+          </li>
+        </ul>
       </div>
-      <div class="hero-stats">
-        <div class="stat">
-          <strong>3000+</strong>
-          <span>Procedimientos</span>
-        </div>
-        <div class="stat">
-          <strong>24+</strong>
-          <span>Años de experiencia</span>
-        </div>
-        <div class="stat">
-          <strong>1000+</strong>
-          <span>Vidas salvadas</span>
+      <div class="hero-portrait">
+        <div class="hero-portrait-frame">
+          <img src="assets/images/dr-henry-pacheco-principal.png" alt="Retrato profesional del Dr. Henry Pacheco Fernández Baca" width="1254" height="1254">
+          <div class="hero-portrait-caption">
+            <strong>Dr. Henry Pacheco</strong>
+            <span>Neurocirujano</span>
+          </div>
         </div>
       </div>
     </div>
@@ -88,7 +98,7 @@
     <div class="container sobre-grid">
       <div class="sobre-imagen">
         <div class="foto-marco">
-          <img src="assets/images/dr-henry-pacheco.jpg" alt="Dr. Henry Pacheco Fernández Baca">
+          <img src="assets/images/dr-henry-pacheco-principal.png" alt="Dr. Henry Pacheco Fernández Baca">
           <div class="foto-credito">Dr. Henry Pacheco Fernández Baca</div>
         </div>
         <div class="foto-badge">🩺 Neurocirugía Endovascular</div>
@@ -316,7 +326,7 @@
           <p class="texto">"Increíble humano, tiene paciencia y sobre todo es un gran profesional. Salvó la vida de mi hija de 15 años. Entró por emergencia y sin ser su día de trabajo, él no dudó en intervenirla. Dios lo bendiga, porque él salva vidas."</p>
           <div class="autor">
             <strong>Madre de paciente</strong>
-            <span>Emergencia · Clínica San Borja</span>
+            <span>Emergencia · Clínica San Borja · Opinión pública</span>
           </div>
         </div>
         <div class="testimonio">
@@ -324,12 +334,18 @@
           <p class="texto">"Fui atendida por el Doctor y encontré al mejor. Tenía diagnóstico de aneurisma cerebral. El Dr. Henry no solo es un trome en su especialidad, sino también resalta su calidad humana, elemento que muchos médicos pierden en el camino."</p>
           <div class="autor">
             <strong>Paciente de aneurisma</strong>
-            <span>Panangiografía cerebral · Clínica El Golf</span>
+            <span>Panangiografía cerebral · Clínica El Golf · Opinión pública</span>
           </div>
+        </div>
+        <div class="testimonio testimonio-invitacion">
+          <span class="testimonio-icon" aria-hidden="true">“</span>
+          <h3>Tu experiencia también puede ayudar</h3>
+          <p>Comparte cómo fue tu atención con el Dr. Pacheco. Tu testimonio será revisado antes de publicarse y nunca mostraremos datos médicos sensibles.</p>
+          <button type="button" class="btn btn-primary" data-open-testimonio>Compartir mi experiencia</button>
         </div>
       </div>
       <div class="testimonios-note">
-        <a href="#agenda" class="btn btn-outline">Comparte tu experiencia</a>
+        <p>Los testimonios publicados provienen de opiniones públicas. También puedes dejar una opinión directamente en <a href="https://www.doctoralia.pe/anade-opinion/henry-pacheco-fernandez-baca" target="_blank" rel="noopener">Doctoralia</a>.</p>
       </div>
     </div>
   </section>
@@ -347,7 +363,7 @@
               <span class="contacto-icon">📱</span>
               <div>
                 <strong>WhatsApp directo</strong>
-                <a href="https://wa.me/51974639760" style="color:#bae6fd;text-decoration:underline;" target="_blank" rel="noopener">+51 974 639 760</a>
+                <a href="https://wa.me/51974639760" class="contacto-link" target="_blank" rel="noopener">+51 974 639 760</a>
               </div>
             </div>
             <div class="contacto-item">
@@ -473,6 +489,54 @@
     <a href="https://wa.me/51974639760" target="_blank" rel="noopener" aria-label="WhatsApp">💬 WhatsApp</a>
   </div>
 
-  <script src="js/main.js?v=3"></script>
+  <div class="modal" id="testimonioModal" hidden>
+    <div class="modal-backdrop" data-close-testimonio></div>
+    <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="testimonioTitulo">
+      <button type="button" class="modal-close" data-close-testimonio aria-label="Cerrar formulario">×</button>
+      <span class="section-tag">Tu opinión importa</span>
+      <h2 id="testimonioTitulo">Comparte tu experiencia</h2>
+      <p class="modal-intro">Completa este formulario y enviaremos tu experiencia por WhatsApp para revisarla antes de publicarla.</p>
+      <form id="testimonioForm">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="testimonioNombre">Nombre o iniciales *</label>
+            <input type="text" id="testimonioNombre" name="nombre" required maxlength="60" placeholder="Ej. María G. o Anónimo">
+          </div>
+          <div class="form-group">
+            <label for="testimonioRelacion">¿Quién recibió la atención? *</label>
+            <select id="testimonioRelacion" name="relacion" required>
+              <option value="">Selecciona una opción</option>
+              <option>Yo fui el paciente</option>
+              <option>Un familiar</option>
+              <option>Otra persona cercana</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="testimonioCalificacion">Calificación *</label>
+          <select id="testimonioCalificacion" name="calificacion" required>
+            <option value="">Selecciona una calificación</option>
+            <option value="5">5 - Excelente</option>
+            <option value="4">4 - Muy buena</option>
+            <option value="3">3 - Buena</option>
+            <option value="2">2 - Regular</option>
+            <option value="1">1 - Mala</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="testimonioTexto">Cuéntanos tu experiencia *</label>
+          <textarea id="testimonioTexto" name="experiencia" rows="5" required minlength="20" maxlength="800" placeholder="Describe brevemente cómo fue la atención recibida."></textarea>
+          <small>Evita incluir diagnósticos, teléfonos u otros datos privados.</small>
+        </div>
+        <label class="form-check">
+          <input type="checkbox" id="testimonioConsentimiento" required>
+          <span>Autorizo que mi comentario sea revisado y publicado de forma total o parcial, usando el nombre o las iniciales indicadas.</span>
+        </label>
+        <button type="submit" class="btn btn-primary btn-full">Enviar testimonio por WhatsApp</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="js/main.js?v=4"></script>
 </body>
 </html>

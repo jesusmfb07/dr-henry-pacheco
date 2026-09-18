@@ -118,3 +118,52 @@ if (newsletterForm) {
     }, 3000);
   });
 }
+
+// Formulario de testimonio: revisión previa por WhatsApp
+const testimonioModal = document.getElementById('testimonioModal');
+const testimonioForm = document.getElementById('testimonioForm');
+const abrirTestimonio = document.querySelector('[data-open-testimonio]');
+const cerrarTestimonio = document.querySelectorAll('[data-close-testimonio]');
+
+if (testimonioModal && testimonioForm && abrirTestimonio) {
+  const abrirModal = () => {
+    testimonioModal.hidden = false;
+    testimonioModal.classList.add('is-open');
+    document.body.classList.add('modal-open');
+    document.getElementById('testimonioNombre').focus();
+  };
+
+  const cerrarModal = () => {
+    testimonioModal.classList.remove('is-open');
+    testimonioModal.hidden = true;
+    document.body.classList.remove('modal-open');
+    abrirTestimonio.focus();
+  };
+
+  abrirTestimonio.addEventListener('click', abrirModal);
+  cerrarTestimonio.forEach(elemento => elemento.addEventListener('click', cerrarModal));
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && testimonioModal.classList.contains('is-open')) cerrarModal();
+  });
+
+  testimonioForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const nombre = document.getElementById('testimonioNombre').value.trim();
+    const relacion = document.getElementById('testimonioRelacion').value;
+    const calificacion = document.getElementById('testimonioCalificacion').value;
+    const experiencia = document.getElementById('testimonioTexto').value.trim();
+    const estrellas = '★'.repeat(Number(calificacion));
+    const mensaje = [
+      'Hola, quiero compartir mi experiencia con el Dr. Henry Pacheco para su revisión.',
+      '',
+      'Nombre o iniciales: ' + nombre,
+      'Atención recibida por: ' + relacion,
+      'Calificación: ' + estrellas + ' (' + calificacion + '/5)',
+      'Experiencia: ' + experiencia,
+      '',
+      'Autorizo la revisión y eventual publicación de este comentario.'
+    ].join('\n');
+
+    window.open('https://wa.me/51974639760?text=' + encodeURIComponent(mensaje), '_blank', 'noopener');
+  });
+}
