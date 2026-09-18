@@ -660,6 +660,62 @@ section[id] {
   position: relative;
   transition: var(--transition);
 }
+.sede-card-institucion {
+  min-height: 480px;
+  padding-bottom: 178px;
+  isolation: isolate;
+  overflow: hidden;
+}
+.sede-card-institucion::before {
+  content: "";
+  position: absolute;
+  z-index: -2;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 190px;
+  background-image: var(--sede-image);
+  background-position: var(--sede-position, center);
+  background-size: cover;
+  transform: scale(1.01);
+  transform-origin: center;
+  transition: transform 0.5s ease, filter 0.35s ease;
+}
+.sede-card-institucion::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 225px;
+  background: linear-gradient(to bottom, var(--bg-alt) 4%, rgba(248, 250, 252, 0.88) 22%, rgba(248, 250, 252, 0.18) 68%, rgba(248, 250, 252, 0.04) 100%);
+  pointer-events: none;
+}
+.sede-card-institucion:hover::before {
+  filter: saturate(1.08) contrast(1.03);
+  transform: scale(1.06);
+}
+.sede-delgado {
+  --sede-image: url('../assets/images/sede-clinica-delgado.jpg');
+  --sede-position: center 48%;
+}
+.sede-san-borja {
+  --sede-image: url('../assets/images/sede-sanna-san-borja.avif');
+  --sede-position: center 38%;
+}
+.sede-el-golf {
+  --sede-image: url('../assets/images/sede-sanna-el-golf.jpg');
+  --sede-position: center 48%;
+}
+.sede-internacional {
+  --sede-image: url('../assets/images/sede-clinica-internacional.jpg');
+  --sede-position: center 42%;
+}
+.sede-carrion {
+  --sede-image: url('../assets/images/sede-hospital-carrion.jpg');
+  --sede-position: center 45%;
+}
 .sede-card:hover {
   box-shadow: var(--shadow);
   transform: translateY(-4px);
@@ -685,6 +741,17 @@ section[id] {
 .sede-card h3 {
   font-size: 1.2rem;
   margin-bottom: 6px;
+}
+.sede-card h3 a {
+  color: inherit;
+  text-decoration-color: transparent;
+  text-underline-offset: 4px;
+  transition: color 0.25s ease, text-decoration-color 0.25s ease;
+}
+.sede-card h3 a:hover,
+.sede-card h3 a:focus-visible {
+  color: var(--primary);
+  text-decoration-color: currentColor;
 }
 .sede-card > p {
   color: var(--text-light);
@@ -1346,6 +1413,9 @@ body.modal-open {
   .card { min-height: 370px; }
   .card-medical-img { height: 46%; }
   .sedes-grid { grid-template-columns: 1fr; }
+  .sede-card-institucion { min-height: 470px; padding-bottom: 168px; }
+  .sede-card-institucion::before { height: 180px; }
+  .sede-card-institucion::after { height: 215px; }
   .logros-grid { grid-template-columns: 1fr; }
   .testimonios-grid { grid-template-columns: 1fr; }
   .blog-grid { grid-template-columns: 1fr; }
