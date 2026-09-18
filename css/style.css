@@ -593,22 +593,6 @@ section[id] {
   box-shadow: var(--shadow-lg);
   border-color: var(--tab);
 }
-.card-ico {
-  display: inline-flex;
-  width: 58px;
-  height: 58px;
-  border-radius: 14px;
-  align-items: center;
-  justify-content: center;
-  background: var(--tab);
-  color: #fff;
-  margin-bottom: 20px;
-  box-shadow: 0 6px 16px rgba(2, 6, 23, 0.18);
-}
-.card-ico svg {
-  width: 34px;
-  height: 34px;
-}
 .c-aneurisma { --tab: #dc2626; --card-bg: #fff1f2; }
 .c-acv { --tab: #7c3aed; --card-bg: #f4efff; }
 .c-mav { --tab: #0e7490; --card-bg: #e6f9fd; }
@@ -730,9 +714,6 @@ section[id] {
   align-items: center;
   margin-bottom: 20px;
 }
-.sede-logo {
-  font-size: 2.2rem;
-}
 .sede-flag {
   background: rgba(14, 116, 144, 0.1);
   color: var(--primary);
@@ -813,10 +794,6 @@ section[id] {
 }
 .logro-item:hover {
   background: rgba(255, 255, 255, 0.16);
-}
-.logro-icon {
-  font-size: 2rem;
-  margin-bottom: 14px;
 }
 .logro-item h4 {
   color: #fff;
@@ -996,20 +973,9 @@ body.modal-open {
   margin-top: 28px;
 }
 .contacto-item {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  margin-bottom: 22px;
-}
-.contacto-icon {
-  font-size: 1.6rem;
-  width: 52px;
-  height: 52px;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  padding: 0 0 16px;
+  margin-bottom: 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
 }
 .contacto-item strong {
   display: block;

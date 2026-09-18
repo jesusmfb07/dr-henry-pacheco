@@ -91,11 +91,11 @@ if (citaForm) {
 
     const mensaje =
       'Hola Dr. Henry Pacheco, quiero agendar una cita médica.%0A' +
-      '👤 Nombre: ' + encodeURIComponent(nombre) + '%0A' +
-      '📱 Teléfono: ' + encodeURIComponent(telefono) +
-      (correo ? '%0A✉️ Correo: ' + encodeURIComponent(correo) : '') +
-      '%0A🏥 Sede de preferencia: ' + encodeURIComponent(opcionesSede[sede] || sede) +
-      (motivo ? '%0A📝 Motivo: ' + encodeURIComponent(motivo) : '');
+      'Nombre: ' + encodeURIComponent(nombre) + '%0A' +
+      'Teléfono: ' + encodeURIComponent(telefono) +
+      (correo ? '%0ACorreo: ' + encodeURIComponent(correo) : '') +
+      '%0ASede de preferencia: ' + encodeURIComponent(opcionesSede[sede] || sede) +
+      (motivo ? '%0AMotivo: ' + encodeURIComponent(motivo) : '');
 
     window.open('https://wa.me/51974639760?text=' + mensaje, '_blank');
   });
@@ -109,7 +109,7 @@ if (newsletterForm) {
     const email = document.getElementById('newsletterEmail').value;
     const btn = newsletterForm.querySelector('button');
     const original = btn.textContent;
-    btn.textContent = '✅ Suscrito';
+    btn.textContent = 'Suscrito';
     btn.disabled = true;
     setTimeout(() => {
       btn.textContent = original;
