@@ -104,7 +104,7 @@ El archivo `CNAME` del proyecto ya contiene `neurocirujanohenrypacheco.com`, as�
 
 - CMP: 34879
 - RNE: 19819
-- Especialidad: Neurocirugía (Universidad Nacional Mayor de San Marcos)
+- Especialidad: Neurocirugía
 - Campo de interés: Neurointervencionismo
 - Sedes: Clínica Delgado AUNA, Clínica San Borja, Hospital Nacional Daniel Alcides Carrión del Callao
 
