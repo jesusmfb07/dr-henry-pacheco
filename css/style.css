@@ -661,8 +661,8 @@ section[id] {
   transition: var(--transition);
 }
 .sede-card-institucion {
-  min-height: 480px;
-  padding-bottom: 178px;
+  min-height: 500px;
+  padding-bottom: 210px;
   isolation: isolate;
   overflow: hidden;
 }
@@ -695,6 +695,10 @@ section[id] {
 .sede-card-institucion:hover::before {
   filter: saturate(1.08) contrast(1.03);
   transform: scale(1.06);
+}
+.sede-card-institucion .sede-top {
+  justify-content: flex-end;
+  margin-bottom: 12px;
 }
 .sede-delgado {
   --sede-image: url('../assets/images/sede-clinica-delgado.jpg');
@@ -1407,13 +1411,22 @@ body.modal-open {
   .foto-exp { top: 10px; right: 10px; padding: 4px 7px; }
   .foto-exp strong { font-size: 0.82rem; }
   .foto-exp span { font-size: 0.44rem; }
-  .foto-badge { top: 18px; }
+  .foto-badge {
+    top: 10px;
+    max-width: 150px;
+    padding: 4px 7px;
+    border-radius: 12px;
+    font-size: 0.52rem;
+    letter-spacing: 0.2px;
+    line-height: 1.25;
+    white-space: normal;
+  }
   .agenda-grid { grid-template-columns: 1fr; gap: 32px; }
   .especialidades-grid { grid-template-columns: 1fr; }
   .card { min-height: 370px; }
   .card-medical-img { height: 46%; }
   .sedes-grid { grid-template-columns: 1fr; }
-  .sede-card-institucion { min-height: 470px; padding-bottom: 168px; }
+  .sede-card-institucion { min-height: 490px; padding-bottom: 195px; }
   .sede-card-institucion::before { height: 180px; }
   .sede-card-institucion::after { height: 215px; }
   .logros-grid { grid-template-columns: 1fr; }
