@@ -404,6 +404,11 @@ section[id] {
 .section-head.center {
   text-align: center;
 }
+.section-head.center .section-sub {
+  margin-right: auto;
+  margin-left: auto;
+  text-align: center;
+}
 .section-tag {
   display: inline-block;
   color: var(--primary);
@@ -564,12 +569,24 @@ section[id] {
   border: 1px solid var(--border);
   padding: 34px 30px;
   overflow: hidden;
+  min-height: 390px;
   box-shadow: 0 4px 14px rgba(2, 6, 23, 0.06);
   transition: var(--transition);
 }
-.card > * {
-  position: relative;
+.card::after {
+  content: "";
+  position: absolute;
   z-index: 1;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 58%;
+  background: linear-gradient(to bottom, var(--card-bg) 0%, transparent 62%);
+  pointer-events: none;
+}
+.card > *:not(.card-medical-img) {
+  position: relative;
+  z-index: 2;
 }
 .card:hover {
   transform: translateY(-6px);
@@ -607,7 +624,24 @@ section[id] {
   color: var(--text-light);
   font-size: 0.92rem;
   position: relative;
-  z-index: 1;
+  z-index: 2;
+}
+.card-medical-img {
+  position: absolute;
+  z-index: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 48%;
+  object-fit: cover;
+  object-position: center;
+  opacity: 0.82;
+  transition: transform 0.5s ease, opacity 0.3s ease;
+}
+.card:hover .card-medical-img {
+  transform: scale(1.04);
+  opacity: 0.95;
 }
 
 /* === SEDES === */
@@ -1309,6 +1343,8 @@ body.modal-open {
   .foto-badge { top: 18px; }
   .agenda-grid { grid-template-columns: 1fr; gap: 32px; }
   .especialidades-grid { grid-template-columns: 1fr; }
+  .card { min-height: 370px; }
+  .card-medical-img { height: 46%; }
   .sedes-grid { grid-template-columns: 1fr; }
   .logros-grid { grid-template-columns: 1fr; }
   .testimonios-grid { grid-template-columns: 1fr; }
