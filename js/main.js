@@ -20,6 +20,47 @@ if (hamburger && nav) {
 const anioEl = document.getElementById('anio');
 if (anioEl) anioEl.textContent = new Date().getFullYear();
 
+// Estadísticas del hero: crecimiento diario y animación al cargar
+const counters = document.querySelectorAll('[data-counter-base]');
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const limaDate = Object.fromEntries(
+  new Intl.DateTimeFormat('en-US', {
+    timeZone: 'America/Lima',
+    year: 'numeric',
+    month: 'numeric',
+    day: 'numeric'
+  }).formatToParts(new Date()).map(part => [part.type, part.value])
+);
+const todayUtc = Date.UTC(Number(limaDate.year), Number(limaDate.month) - 1, Number(limaDate.day));
+
+counters.forEach(counter => {
+  const base = Number(counter.dataset.counterBase);
+  const daily = Number(counter.dataset.counterDaily);
+  const [year, month, day] = counter.dataset.counterStart.split('-').map(Number);
+  const startUtc = Date.UTC(year, month - 1, day);
+  const elapsedDays = Math.max(0, Math.floor((todayUtc - startUtc) / 86400000));
+  const target = base + (elapsedDays * daily);
+
+  if (reduceMotion) {
+    counter.textContent = `${target}+`;
+    return;
+  }
+
+  const duration = 1400;
+  const startedAt = performance.now();
+
+  const animate = currentTime => {
+    const progress = Math.min((currentTime - startedAt) / duration, 1);
+    const easedProgress = 1 - Math.pow(1 - progress, 3);
+    counter.textContent = `${Math.round(target * easedProgress)}+`;
+
+    if (progress < 1) requestAnimationFrame(animate);
+  };
+
+  counter.textContent = '0+';
+  requestAnimationFrame(animate);
+});
+
 // Navegación activa al hacer scroll
 const sections = document.querySelectorAll('section[id], .blog-hero, .blog-section');
 const navLinks = document.querySelectorAll('.nav-link');
@@ -133,7 +174,7 @@ if (experienciaForm) {
     status.className = 'form-status';
 
     try {
-      const response = await fetch('https://formsubmit.co/ajax/henrypachecofb@gmail.com', {
+      const response = await fetch('https://formsubmit.co/ajax/jesusmfb07@gmail.com', {
         method: 'POST',
         headers: { Accept: 'application/json' },
         body: new FormData(experienciaForm)
