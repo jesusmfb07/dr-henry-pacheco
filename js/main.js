@@ -119,51 +119,36 @@ if (newsletterForm) {
   });
 }
 
-// Formulario de testimonio: revisión previa por WhatsApp
-const testimonioModal = document.getElementById('testimonioModal');
-const testimonioForm = document.getElementById('testimonioForm');
-const abrirTestimonio = document.querySelector('[data-open-testimonio]');
-const cerrarTestimonio = document.querySelectorAll('[data-close-testimonio]');
-
-if (testimonioModal && testimonioForm && abrirTestimonio) {
-  const abrirModal = () => {
-    testimonioModal.hidden = false;
-    testimonioModal.classList.add('is-open');
-    document.body.classList.add('modal-open');
-    document.getElementById('testimonioNombre').focus();
-  };
-
-  const cerrarModal = () => {
-    testimonioModal.classList.remove('is-open');
-    testimonioModal.hidden = true;
-    document.body.classList.remove('modal-open');
-    abrirTestimonio.focus();
-  };
-
-  abrirTestimonio.addEventListener('click', abrirModal);
-  cerrarTestimonio.forEach(elemento => elemento.addEventListener('click', cerrarModal));
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && testimonioModal.classList.contains('is-open')) cerrarModal();
-  });
-
-  testimonioForm.addEventListener('submit', (e) => {
+// Formulario de experiencia: envío por correo para moderación
+const experienciaForm = document.getElementById('experienciaForm');
+if (experienciaForm) {
+  experienciaForm.addEventListener('submit', async (e) => {
     e.preventDefault();
-    const nombre = document.getElementById('testimonioNombre').value.trim();
-    const relacion = document.getElementById('testimonioRelacion').value;
-    const calificacion = document.getElementById('testimonioCalificacion').value;
-    const experiencia = document.getElementById('testimonioTexto').value.trim();
-    const estrellas = '★'.repeat(Number(calificacion));
-    const mensaje = [
-      'Hola, quiero compartir mi experiencia con el Dr. Henry Pacheco para su revisión.',
-      '',
-      'Nombre o iniciales: ' + nombre,
-      'Atención recibida por: ' + relacion,
-      'Calificación: ' + estrellas + ' (' + calificacion + '/5)',
-      'Experiencia: ' + experiencia,
-      '',
-      'Autorizo la revisión y eventual publicación de este comentario.'
-    ].join('\n');
+    const button = experienciaForm.querySelector('button[type="submit"]');
+    const status = document.getElementById('experienciaStatus');
+    const original = button.textContent;
 
-    window.open('https://wa.me/51974639760?text=' + encodeURIComponent(mensaje), '_blank', 'noopener');
+    button.disabled = true;
+    button.textContent = 'Enviando...';
+    status.className = 'form-status';
+
+    try {
+      const response = await fetch('https://formsubmit.co/ajax/henrypachecofb@gmail.com', {
+        method: 'POST',
+        headers: { Accept: 'application/json' },
+        body: new FormData(experienciaForm)
+      });
+      if (!response.ok) throw new Error('No se pudo enviar');
+
+      experienciaForm.reset();
+      status.textContent = 'Gracias. Tu experiencia fue enviada para revisión antes de publicarse.';
+      status.classList.add('is-success');
+    } catch (error) {
+      status.textContent = 'No pudimos enviar tu experiencia en este momento. Inténtalo nuevamente más tarde.';
+      status.classList.add('is-error');
+    } finally {
+      button.disabled = false;
+      button.textContent = original;
+    }
   });
 }
