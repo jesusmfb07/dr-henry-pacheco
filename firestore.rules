@@ -1,0 +1,37 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /testimonios/{testimonioId} {
+      allow read: if true;
+
+      allow create: if request.resource.data.keys().hasOnly([
+          'nombre',
+          'relacion',
+          'calificacion',
+          'experiencia',
+          'createdAt'
+        ])
+        && request.resource.data.nombre is string
+        && request.resource.data.nombre.size() >= 1
+        && request.resource.data.nombre.size() <= 60
+        && request.resource.data.relacion is string
+        && request.resource.data.relacion in [
+          'Yo fui el paciente',
+          'Un familiar',
+          'Otra persona cercana'
+        ]
+        && request.resource.data.calificacion is int
+        && request.resource.data.calificacion >= 1
+        && request.resource.data.calificacion <= 5
+        && request.resource.data.experiencia is string
+        && request.resource.data.experiencia.size() >= 20
+        && request.resource.data.experiencia.size() <= 1000
+        && request.resource.data.createdAt == request.time;
+
+      allow delete: if request.auth != null
+        && request.auth.uid == 'pNPsZ8BypheBCiWJArdbYi4n7LA2';
+      allow update: if false;
+    }
+  }
+}

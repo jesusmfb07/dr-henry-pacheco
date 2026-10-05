@@ -100,6 +100,19 @@ El archivo `CNAME` del proyecto ya contiene `neurocirujanohenrypacheco.com`, as�
 - 🏥 Clínicas: Delgado, Sanna San Borja, Sanna El Golf, Clínica Internacional
 - 🏥 Hospital Nacional Daniel Alcides Carrión (24 años de servicio)
 
+## Firebase: testimonios y administración
+
+El sitio usa el proyecto existente `dr-henry-pacheco`. Los comentarios se guardan en la colección `testimonios` de Firestore y se muestran en la portada y en `testimonios.html`.
+
+Antes de publicar esta versión, despliega las reglas de seguridad incluidas:
+
+```powershell
+npx firebase-tools login
+npx firebase-tools deploy --only firestore:rules --project dr-henry-pacheco
+```
+
+También puedes copiar `firestore.rules` en **Firebase Console > Firestore Database > Rules** y pulsar **Publish**. La eliminación está limitada al UID administrador configurado. El panel privado está en `/admin.html` y utiliza Firebase Authentication con correo y contraseña.
+
 ## Créditos y datos
 
 - CMP: 34879
