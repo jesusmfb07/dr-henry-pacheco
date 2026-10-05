@@ -160,29 +160,120 @@ if (newsletterForm) {
   });
 }
 
-// Formulario de experiencia: envío por correo para moderación
+// Formulario de experiencia: envío por correo y publicación en este navegador
 const experienciaForm = document.getElementById('experienciaForm');
 if (experienciaForm) {
+  const testimoniosList = document.getElementById('testimoniosList');
+  const storageKey = 'drHenryTestimonios';
+  const adminMode = new URLSearchParams(window.location.search).get('admin') === '1';
+  let testimoniosGuardados = [];
+
+  const guardarTestimonios = () => {
+    try {
+      localStorage.setItem(storageKey, JSON.stringify(testimoniosGuardados));
+    } catch (error) {
+      // El sitio sigue funcionando aunque el navegador bloquee localStorage.
+    }
+  };
+
+  const crearTestimonio = ({ id, nombre, relacion, calificacion, experiencia }) => {
+    const article = document.createElement('article');
+    const stars = document.createElement('div');
+    const text = document.createElement('p');
+    const author = document.createElement('div');
+    const authorName = document.createElement('strong');
+    const detail = document.createElement('span');
+    const rating = Math.min(5, Math.max(1, Number.parseInt(calificacion, 10) || 1));
+
+    article.className = 'testimonio';
+    stars.className = 'stars';
+    stars.setAttribute('role', 'img');
+    stars.setAttribute('aria-label', `${rating} de 5 estrellas`);
+    stars.textContent = '★'.repeat(rating) + '☆'.repeat(5 - rating);
+    text.className = 'texto';
+    text.textContent = `“${experiencia}”`;
+    author.className = 'autor';
+    authorName.textContent = nombre;
+    detail.textContent = `${relacion} · Experiencia enviada`;
+    author.append(authorName, detail);
+    article.append(stars, text, author);
+
+    if (adminMode) {
+      const deleteButton = document.createElement('button');
+      deleteButton.type = 'button';
+      deleteButton.className = 'testimonio-delete';
+      deleteButton.textContent = 'Eliminar comentario';
+      deleteButton.addEventListener('click', () => {
+        if (!window.confirm(`¿Eliminar el comentario de ${nombre}?`)) return;
+
+        testimoniosGuardados = testimoniosGuardados.filter(testimonio => testimonio.id !== id);
+        guardarTestimonios();
+        article.remove();
+      });
+      article.append(deleteButton);
+    }
+
+    return article;
+  };
+
+  try {
+    const saved = JSON.parse(localStorage.getItem(storageKey) || '[]');
+    if (Array.isArray(saved)) {
+      testimoniosGuardados = saved.map((testimonio, index) => ({
+        ...testimonio,
+        id: testimonio.id || `guardado-${Date.now()}-${index}`
+      }));
+      guardarTestimonios();
+    }
+  } catch (error) {
+    // Algunos modos privados bloquean por completo el acceso a localStorage.
+  }
+
+  if (adminMode) {
+    const adminNotice = document.createElement('p');
+    adminNotice.className = 'testimonios-admin-notice';
+    adminNotice.textContent = 'Modo administrador: puedes eliminar los comentarios enviados desde este navegador.';
+    testimoniosList.before(adminNotice);
+  }
+
+  testimoniosGuardados.forEach(testimonio => {
+    testimoniosList.prepend(crearTestimonio(testimonio));
+  });
+
   experienciaForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     const button = experienciaForm.querySelector('button[type="submit"]');
     const status = document.getElementById('experienciaStatus');
     const original = button.textContent;
+    const testimonio = {
+      id: `testimonio-${Date.now()}-${Math.random().toString(16).slice(2)}`,
+      nombre: document.getElementById('experienciaNombre').value.trim(),
+      relacion: document.getElementById('experienciaRelacion').value,
+      calificacion: document.getElementById('experienciaCalificacion').value,
+      experiencia: document.getElementById('experienciaTexto').value.trim()
+    };
+    const correo = document.getElementById('experienciaCorreo').value.trim();
+    const formData = new FormData(experienciaForm);
+    formData.set('_subject', `Nuevo mensaje de ${testimonio.nombre}`);
+    if (correo) formData.set('_replyto', correo);
 
     button.disabled = true;
     button.textContent = 'Enviando...';
     status.className = 'form-status';
 
     try {
-      const response = await fetch('https://formsubmit.co/ajax/jesusmfb07@gmail.com', {
+      const response = await fetch('https://formsubmit.co/ajax/henry.pacheco.md@gmail.com', {
         method: 'POST',
         headers: { Accept: 'application/json' },
-        body: new FormData(experienciaForm)
+        body: formData
       });
       if (!response.ok) throw new Error('No se pudo enviar');
 
+      testimoniosGuardados.push(testimonio);
+      guardarTestimonios();
+      testimoniosList.prepend(crearTestimonio(testimonio));
       experienciaForm.reset();
-      status.textContent = 'Gracias. Tu experiencia fue enviada para revisión antes de publicarse.';
+      status.textContent = 'Gracias. Tu experiencia fue enviada y añadida correctamente.';
       status.classList.add('is-success');
     } catch (error) {
       status.textContent = 'No pudimos enviar tu experiencia en este momento. Inténtalo nuevamente más tarde.';

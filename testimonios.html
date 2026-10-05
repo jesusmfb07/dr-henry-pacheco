@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=11">
+  <link rel="stylesheet" href="css/style.css?v=12">
 </head>
 <body>
   <div class="topbar">
@@ -61,7 +61,7 @@
           <h2 class="section-title" id="testimoniosPublicados">Experiencias compartidas</h2>
           <p class="section-sub">Las opiniones visibles provienen de publicaciones públicas y se presentan sin datos personales sensibles.</p>
         </div>
-        <div class="testimonios-list">
+        <div class="testimonios-list" id="testimoniosList">
           <article class="testimonio">
             <div class="stars" role="img" aria-label="5 de 5 estrellas">★★★★★</div>
             <p class="texto">"Increíble humano, tiene paciencia y sobre todo es un gran profesional. Salvó la vida de mi hija de 15 años. Entró por emergencia y sin ser su día de trabajo, él no dudó en intervenirla. Dios lo bendiga, porque él salva vidas."</p>
@@ -85,7 +85,7 @@
         <form class="form experiencia-form" id="experienciaForm">
           <span class="section-tag">Tu opinión importa</span>
           <h2 id="compartirExperiencia">Comparte tu experiencia</h2>
-          <p class="experiencia-intro">Tu comentario será enviado de forma privada y revisado antes de una posible publicación.</p>
+          <p class="experiencia-intro">Tu comentario será enviado por correo y se añadirá a las experiencias visibles en este navegador.</p>
           <div id="experienciaStatus" class="form-status" role="status" aria-live="polite"></div>
           <input type="hidden" name="_subject" value="Nuevo testimonio para la web del Dr. Henry Pacheco">
           <input type="hidden" name="_template" value="table">
@@ -131,10 +131,10 @@
           </div>
           <label class="form-check">
             <input type="checkbox" name="Autorización de publicación" value="Sí, autorizo" required>
-            <span>Autorizo que mi comentario sea revisado y publicado total o parcialmente usando el nombre, las iniciales o la opción Anónimo indicada.</span>
+            <span>Autorizo que mi comentario sea enviado y publicado usando el nombre, las iniciales o la opción Anónimo indicada.</span>
           </label>
-          <p class="form-privacy">El envío no publica automáticamente el comentario. Todas las experiencias pasan por un proceso de revisión.</p>
-          <button type="submit" class="btn btn-primary btn-full">Enviar experiencia para revisión</button>
+          <p class="form-privacy">El correo de contacto nunca se mostrará junto al comentario.</p>
+          <button type="submit" class="btn btn-primary btn-full">Enviar y publicar experiencia</button>
         </form>
       </aside>
     </div>
@@ -178,6 +178,6 @@
     </div>
   </footer>
 
-  <script src="js/main.js?v=7"></script>
+  <script src="js/main.js?v=10"></script>
 </body>
 </html>
